@@ -61,7 +61,11 @@ def scan_file(path: Path):
             if pattern.search(line):
                 findings.append((path, line_no, name, line.strip()[:180]))
         for token in re.findall(r"[A-Za-z0-9_./+=-]{48,}", line):
-            if entropy(token) >= 4.2 and not token.startswith(("https://", "http://")):
+            # Markdown and YAML often contain long public URLs; these are not
+            # credentials and would otherwise drown out real findings.
+            if token.startswith(("https://", "http://", "//")) or "github.com/" in token or "img.shields.io/" in token:
+                continue
+            if entropy(token) >= 4.2:
                 findings.append((path, line_no, "high_entropy_token", token[:80] + "..."))
     return findings
 

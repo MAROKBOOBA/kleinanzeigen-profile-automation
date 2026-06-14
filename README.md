@@ -1,12 +1,27 @@
 # Kleinanzeigen Profile Automation
 
-Assisted Kleinanzeigen browser automation for people who already have a logged-in Firefox, Chromium, or Google Chrome profile — or who want to complete login manually once and then reuse that local browser profile.
+[![CI](https://github.com/MAROKBOOBA/kleinanzeigen-profile-automation/actions/workflows/ci.yml/badge.svg)](https://github.com/MAROKBOOBA/kleinanzeigen-profile-automation/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![No automatic login](https://img.shields.io/badge/login-manual%20only-blue)](docs/LOGIN_POLICY.md)
+
+Credential-safe Kleinanzeigen browser automation for people who already have a logged-in Firefox, Chromium, or Google Chrome profile — or who want to complete login manually once and then reuse that local browser profile.
 
 The repository is intentionally designed around one hard rule:
 
 > **No automatic login. No stored passwords. No 2FA/captcha/identity/payment automation.**
 
 If a login, password, 2FA, captcha, phone, identity, payment, or security prompt appears, the run stops and asks the human to handle it manually.
+
+## Project status
+
+This is an early OSS baseline (`v0.1.0`) focused on the safety architecture, local queue loading, manual-login handoff, and repeatable verification. See:
+
+- [Roadmap](ROADMAP.md)
+- [Changelog](CHANGELOG.md)
+- [German quick start](docs/USAGE_DE.md)
+- [Maintainer workflows](docs/MAINTAINER_WORKFLOWS.md)
+- [Login policy](docs/LOGIN_POLICY.md)
+- [Privacy audit checklist](docs/PRIVACY_AUDIT.md)
 
 ## What this project does
 
@@ -17,6 +32,7 @@ If a login, password, 2FA, captcha, phone, identity, payment, or security prompt
 - Leaves login and account-security steps to the account owner.
 - Refuses sensitive credential/session fields in listing input.
 - Keeps example data generic and does not require personal configuration files.
+- Runs CI checks for compile, unit tests, dry-run behavior, and generic secret scanning.
 
 ## What this project does **not** do
 
@@ -135,8 +151,9 @@ Run:
 
 ```bash
 python scripts/secret_scan.py .
-python -m compileall src scripts
-python -m unittest discover -s tests
+python -m compileall -q src scripts
+PYTHONPATH=src python -m unittest discover -s tests
+PYTHONPATH=src python -m kpa dry-run examples/listings.example.json
 ```
 
 This repository should contain only source code, documentation, and generic example data. Browser profiles, logs, run artifacts, screenshots, cookies, storage state files, `.env` files, and local queues are ignored by `.gitignore`.

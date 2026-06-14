@@ -1,0 +1,50 @@
+name: Bug report
+description: Report a reproducible bug that does not involve credentials or account challenges.
+title: "bug: "
+labels: [bug, needs-triage]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting a bug. Do **not** include passwords, cookies, session files, screenshots with private account data, phone numbers, or identity/payment details.
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: What happened?
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: Include the command and sanitized listing input shape if possible.
+      placeholder: |
+        1. Run `kpa ...`
+        2. Observe ...
+    validations:
+      required: true
+  - type: dropdown
+    id: browser
+    attributes:
+      label: Browser backend
+      options:
+        - chrome
+        - chromium
+        - firefox
+        - dry-run/no browser
+        - unknown
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Sanitized logs
+      description: Redact all account/session data before posting.
+      render: text
