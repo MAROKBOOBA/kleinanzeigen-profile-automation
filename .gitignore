@@ -1,0 +1,56 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+
+# Local configuration and secrets
+.env
+.env.*
+!.env.example
+*.local
+*.local.*
+
+# Browser/session data - never commit
+.profiles/
+profiles/
+browser-profiles/
+user-data-dir/
+storage-state*.json
+*cookies*.json
+*cookies*.txt
+*session*.json
+*.sqlite
+*.sqlite3
+Login Data
+Cookies
+Local Storage/
+Session Storage/
+IndexedDB/
+
+# Automation run artifacts
+runs/
+run-artifacts/
+status.jsonl
+*.log
+*.png
+*.jpg
+*.jpeg
+*.webp
+*.html
+
+# Local listing queues can contain private data
+queues/
+listings.local.json
+listings.local.yaml
+listings.local.yml
+listings.local.csv
+
+# OS/editor
+.DS_Store
+.idea/
+.vscode/

@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "kleinanzeigen-profile-automation"
+version = "0.1.0"
+description = "Credential-safe Kleinanzeigen browser automation for existing Firefox/Chrome profiles."
+readme = "README.md"
+requires-python = ">=3.9"
+license = {text = "MIT"}
+authors = [{name = "Kleinanzeigen Profile Automation contributors"}]
+keywords = ["kleinanzeigen", "browser-automation", "playwright", "firefox", "chrome"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Environment :: Console",
+  "Intended Audience :: End Users/Desktop",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Internet :: WWW/HTTP :: Browsers",
+]
+dependencies = [
+  "playwright>=1.44",
+]
+
+[project.optional-dependencies]
+yaml = ["PyYAML>=6.0"]
+dev = ["PyYAML>=6.0"]
+
+[project.scripts]
+kpa = "kpa.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+

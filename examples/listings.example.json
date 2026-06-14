@@ -1,0 +1,14 @@
+[
+  {
+    "id": "example-001",
+    "title": "Beispielartikel in gutem Zustand",
+    "price": "15",
+    "description": "Dies ist ein generischer Beispielartikel für die lokale Testautomatisierung. Bitte vor Veröffentlichung durch echte, eigene Angaben ersetzen.",
+    "postal_code": "10115",
+    "city": "Berlin",
+    "condition": "Gut",
+    "category_path": ["Freizeit, Hobby & Nachbarschaft", "Sonstiges"],
+    "shipping": "default",
+    "photos": []
+  }
+]
